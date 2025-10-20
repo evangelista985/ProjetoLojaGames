@@ -40,13 +40,19 @@
             this.chkTotalPass = new System.Windows.Forms.CheckBox();
             this.chk2Contas = new System.Windows.Forms.CheckBox();
             this.txtValorPagar = new System.Windows.Forms.TextBox();
+            this.dgvPedido = new System.Windows.Forms.DataGridView();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.btnCalcular = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
             this.grpOpcionais.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
             // 
             // lblValorOpcionais
             // 
             this.lblValorOpcionais.AutoSize = true;
-            this.lblValorOpcionais.Location = new System.Drawing.Point(351, 34);
+            this.lblValorOpcionais.Location = new System.Drawing.Point(451, 34);
             this.lblValorOpcionais.Name = "lblValorOpcionais";
             this.lblValorOpcionais.Size = new System.Drawing.Size(130, 13);
             this.lblValorOpcionais.TabIndex = 0;
@@ -55,7 +61,7 @@
             // lblValorPagar
             // 
             this.lblValorPagar.AutoSize = true;
-            this.lblValorPagar.Location = new System.Drawing.Point(529, 34);
+            this.lblValorPagar.Location = new System.Drawing.Point(633, 34);
             this.lblValorPagar.Name = "lblValorPagar";
             this.lblValorPagar.Size = new System.Drawing.Size(93, 13);
             this.lblValorPagar.TabIndex = 1;
@@ -64,7 +70,7 @@
             // lblValorJogo
             // 
             this.lblValorJogo.AutoSize = true;
-            this.lblValorJogo.Location = new System.Drawing.Point(236, 29);
+            this.lblValorJogo.Location = new System.Drawing.Point(236, 34);
             this.lblValorJogo.Name = "lblValorJogo";
             this.lblValorJogo.Size = new System.Drawing.Size(94, 13);
             this.lblValorJogo.TabIndex = 2;
@@ -88,7 +94,7 @@
             // 
             // txtValorOpcionais
             // 
-            this.txtValorOpcionais.Location = new System.Drawing.Point(381, 64);
+            this.txtValorOpcionais.Location = new System.Drawing.Point(454, 64);
             this.txtValorOpcionais.Name = "txtValorOpcionais";
             this.txtValorOpcionais.Size = new System.Drawing.Size(100, 20);
             this.txtValorOpcionais.TabIndex = 5;
@@ -148,16 +154,65 @@
             // 
             // txtValorPagar
             // 
-            this.txtValorPagar.Location = new System.Drawing.Point(522, 64);
+            this.txtValorPagar.Location = new System.Drawing.Point(636, 64);
             this.txtValorPagar.Name = "txtValorPagar";
             this.txtValorPagar.Size = new System.Drawing.Size(100, 20);
             this.txtValorPagar.TabIndex = 11;
+            // 
+            // dgvPedido
+            // 
+            this.dgvPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPedido.Location = new System.Drawing.Point(305, 156);
+            this.dgvPedido.Name = "dgvPedido";
+            this.dgvPedido.Size = new System.Drawing.Size(431, 123);
+            this.dgvPedido.TabIndex = 12;
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(22, 380);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(100, 28);
+            this.btnNovo.TabIndex = 13;
+            this.btnNovo.Text = "NOVO";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            // 
+            // btnSair
+            // 
+            this.btnSair.Location = new System.Drawing.Point(636, 380);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(100, 28);
+            this.btnSair.TabIndex = 14;
+            this.btnSair.Text = "SAIR";
+            this.btnSair.UseVisualStyleBackColor = true;
+            // 
+            // btnCalcular
+            // 
+            this.btnCalcular.Location = new System.Drawing.Point(454, 380);
+            this.btnCalcular.Name = "btnCalcular";
+            this.btnCalcular.Size = new System.Drawing.Size(100, 28);
+            this.btnCalcular.TabIndex = 15;
+            this.btnCalcular.Text = "CALCULAR";
+            this.btnCalcular.UseVisualStyleBackColor = true;
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Location = new System.Drawing.Point(239, 380);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(100, 28);
+            this.btnSalvar.TabIndex = 16;
+            this.btnSalvar.Text = "SALVAR";
+            this.btnSalvar.UseVisualStyleBackColor = true;
             // 
             // Pedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSalvar);
+            this.Controls.Add(this.btnCalcular);
+            this.Controls.Add(this.btnSair);
+            this.Controls.Add(this.btnNovo);
+            this.Controls.Add(this.dgvPedido);
             this.Controls.Add(this.txtValorPagar);
             this.Controls.Add(this.grpOpcionais);
             this.Controls.Add(this.txtValorOpcionais);
@@ -170,6 +225,7 @@
             this.Text = "Form2";
             this.grpOpcionais.ResumeLayout(false);
             this.grpOpcionais.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,5 +245,10 @@
         private System.Windows.Forms.CheckBox chkTotalPass;
         private System.Windows.Forms.CheckBox chk2Contas;
         private System.Windows.Forms.TextBox txtValorPagar;
+        private System.Windows.Forms.DataGridView dgvPedido;
+        private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Button btnCalcular;
+        private System.Windows.Forms.Button btnSalvar;
     }
 }

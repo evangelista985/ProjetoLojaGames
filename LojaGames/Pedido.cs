@@ -187,6 +187,11 @@ namespace LojaGames
                 dgvPedido.DataSource = null;
             }
         }
+
+        private void Pedido_Paint(object sender, PaintEventArgs e)
+        {
+            this.BackColor = Color.FromArgb(40, 40, 40); // Azul personalizado (RGB)
+        }
     }
 }       
 

@@ -57,32 +57,41 @@ namespace LojaGames
             // lblValorOpcionais
             // 
             this.lblValorOpcionais.AutoSize = true;
+            this.lblValorOpcionais.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorOpcionais.ForeColor = System.Drawing.Color.Silver;
             this.lblValorOpcionais.Location = new System.Drawing.Point(451, 34);
             this.lblValorOpcionais.Name = "lblValorOpcionais";
-            this.lblValorOpcionais.Size = new System.Drawing.Size(130, 13);
+            this.lblValorOpcionais.Size = new System.Drawing.Size(135, 13);
             this.lblValorOpcionais.TabIndex = 0;
             this.lblValorOpcionais.Text = "VALOR DOS OPCIONAIS";
             // 
             // lblValorPagar
             // 
             this.lblValorPagar.AutoSize = true;
-            this.lblValorPagar.Location = new System.Drawing.Point(633, 34);
+            this.lblValorPagar.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorPagar.ForeColor = System.Drawing.Color.Silver;
+            this.lblValorPagar.Location = new System.Drawing.Point(670, 34);
             this.lblValorPagar.Name = "lblValorPagar";
-            this.lblValorPagar.Size = new System.Drawing.Size(93, 13);
+            this.lblValorPagar.Size = new System.Drawing.Size(97, 13);
             this.lblValorPagar.TabIndex = 1;
             this.lblValorPagar.Text = "VALOR A PAGAR";
             // 
             // lblValorJogo
             // 
             this.lblValorJogo.AutoSize = true;
+            this.lblValorJogo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorJogo.ForeColor = System.Drawing.Color.Silver;
             this.lblValorJogo.Location = new System.Drawing.Point(236, 34);
             this.lblValorJogo.Name = "lblValorJogo";
-            this.lblValorJogo.Size = new System.Drawing.Size(94, 13);
+            this.lblValorJogo.Size = new System.Drawing.Size(96, 13);
             this.lblValorJogo.TabIndex = 2;
             this.lblValorJogo.Text = "VALOR DO JOGO";
             // 
             // cmbTiposJogos
             // 
+            this.cmbTiposJogos.BackColor = System.Drawing.Color.Silver;
+            this.cmbTiposJogos.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTiposJogos.ForeColor = System.Drawing.Color.Black;
             this.cmbTiposJogos.FormattingEnabled = true;
             this.cmbTiposJogos.Location = new System.Drawing.Point(22, 63);
             this.cmbTiposJogos.Name = "cmbTiposJogos";
@@ -110,9 +119,11 @@ namespace LojaGames
             this.grpOpcionais.Controls.Add(this.chkTesteDrive);
             this.grpOpcionais.Controls.Add(this.chkTotalPass);
             this.grpOpcionais.Controls.Add(this.chk2Controles);
-            this.grpOpcionais.Location = new System.Drawing.Point(22, 156);
+            this.grpOpcionais.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpOpcionais.ForeColor = System.Drawing.Color.Silver;
+            this.grpOpcionais.Location = new System.Drawing.Point(22, 112);
             this.grpOpcionais.Name = "grpOpcionais";
-            this.grpOpcionais.Size = new System.Drawing.Size(200, 123);
+            this.grpOpcionais.Size = new System.Drawing.Size(213, 123);
             this.grpOpcionais.TabIndex = 6;
             this.grpOpcionais.TabStop = false;
             this.grpOpcionais.Text = "ESCOLHA OPCIONAIS";
@@ -122,7 +133,7 @@ namespace LojaGames
             this.chk2Contas.AutoSize = true;
             this.chk2Contas.Location = new System.Drawing.Point(11, 19);
             this.chk2Contas.Name = "chk2Contas";
-            this.chk2Contas.Size = new System.Drawing.Size(79, 17);
+            this.chk2Contas.Size = new System.Drawing.Size(80, 17);
             this.chk2Contas.TabIndex = 10;
             this.chk2Contas.Text = "2 CONTAS";
             this.chk2Contas.UseVisualStyleBackColor = true;
@@ -132,7 +143,7 @@ namespace LojaGames
             this.chkTesteDrive.AutoSize = true;
             this.chkTesteDrive.Location = new System.Drawing.Point(11, 88);
             this.chkTesteDrive.Name = "chkTesteDrive";
-            this.chkTesteDrive.Size = new System.Drawing.Size(105, 17);
+            this.chkTesteDrive.Size = new System.Drawing.Size(104, 17);
             this.chkTesteDrive.TabIndex = 8;
             this.chkTesteDrive.Text = "TESTE DRIVER";
             this.chkTesteDrive.UseVisualStyleBackColor = true;
@@ -142,7 +153,7 @@ namespace LojaGames
             this.chkTotalPass.AutoSize = true;
             this.chkTotalPass.Location = new System.Drawing.Point(11, 65);
             this.chkTotalPass.Name = "chkTotalPass";
-            this.chkTotalPass.Size = new System.Drawing.Size(134, 17);
+            this.chkTotalPass.Size = new System.Drawing.Size(137, 17);
             this.chkTotalPass.TabIndex = 9;
             this.chkTotalPass.Text = "TOTAL PASS GAMER";
             this.chkTotalPass.UseVisualStyleBackColor = true;
@@ -152,14 +163,14 @@ namespace LojaGames
             this.chk2Controles.AutoSize = true;
             this.chk2Controles.Location = new System.Drawing.Point(11, 42);
             this.chk2Controles.Name = "chk2Controles";
-            this.chk2Controles.Size = new System.Drawing.Size(101, 17);
+            this.chk2Controles.Size = new System.Drawing.Size(100, 17);
             this.chk2Controles.TabIndex = 7;
             this.chk2Controles.Text = "2 CONTROLES";
             this.chk2Controles.UseVisualStyleBackColor = true;
             // 
             // txtValorPagar
             // 
-            this.txtValorPagar.Location = new System.Drawing.Point(636, 64);
+            this.txtValorPagar.Location = new System.Drawing.Point(673, 64);
             this.txtValorPagar.Name = "txtValorPagar";
             this.txtValorPagar.Size = new System.Drawing.Size(100, 20);
             this.txtValorPagar.TabIndex = 11;
@@ -167,52 +178,61 @@ namespace LojaGames
             // dgvPedido
             // 
             this.dgvPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPedido.Location = new System.Drawing.Point(305, 156);
+            this.dgvPedido.Location = new System.Drawing.Point(22, 280);
             this.dgvPedido.Name = "dgvPedido";
-            this.dgvPedido.Size = new System.Drawing.Size(431, 123);
+            this.dgvPedido.Size = new System.Drawing.Size(751, 85);
             this.dgvPedido.TabIndex = 12;
             // 
             // btnNovo
             // 
+            this.btnNovo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnNovo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Location = new System.Drawing.Point(22, 380);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(100, 28);
             this.btnNovo.TabIndex = 13;
             this.btnNovo.Text = "NOVO";
-            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.UseVisualStyleBackColor = false;
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(636, 380);
+            this.btnSair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnSair.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnSair.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.Location = new System.Drawing.Point(673, 380);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(100, 28);
             this.btnSair.TabIndex = 14;
             this.btnSair.Text = "SAIR";
-            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.UseVisualStyleBackColor = false;
             // 
             // btnCalcular
             // 
+            this.btnCalcular.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnCalcular.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalcular.Location = new System.Drawing.Point(454, 380);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(100, 28);
             this.btnCalcular.TabIndex = 15;
             this.btnCalcular.Text = "CALCULAR";
-            this.btnCalcular.UseVisualStyleBackColor = true;
+            this.btnCalcular.UseVisualStyleBackColor = false;
             this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
             // btnSalvar
             // 
+            this.btnSalvar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnSalvar.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.Location = new System.Drawing.Point(239, 380);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(100, 28);
             this.btnSalvar.TabIndex = 16;
             this.btnSalvar.Text = "SALVAR";
-            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(33, 12);
+            this.txtCodigo.Location = new System.Drawing.Point(22, 12);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(100, 20);
             this.txtCodigo.TabIndex = 18;
@@ -220,15 +240,17 @@ namespace LojaGames
             // lblPesquisar
             // 
             this.lblPesquisar.AutoSize = true;
-            this.lblPesquisar.Location = new System.Drawing.Point(310, 294);
+            this.lblPesquisar.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPesquisar.ForeColor = System.Drawing.Color.Silver;
+            this.lblPesquisar.Location = new System.Drawing.Point(451, 181);
             this.lblPesquisar.Name = "lblPesquisar";
-            this.lblPesquisar.Size = new System.Drawing.Size(69, 13);
+            this.lblPesquisar.Size = new System.Drawing.Size(71, 13);
             this.lblPesquisar.TabIndex = 19;
             this.lblPesquisar.Text = "PESQUISAR";
             // 
             // txtPesquisar
             // 
-            this.txtPesquisar.Location = new System.Drawing.Point(313, 310);
+            this.txtPesquisar.Location = new System.Drawing.Point(454, 215);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(100, 20);
             this.txtPesquisar.TabIndex = 20;
@@ -238,6 +260,7 @@ namespace LojaGames
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtPesquisar);
             this.Controls.Add(this.lblPesquisar);
@@ -258,6 +281,7 @@ namespace LojaGames
             this.Name = "Pedido";
             this.Text = "Pedido";
             this.Load += new System.EventHandler(this.Pedido_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Pedido_Paint);
             this.grpOpcionais.ResumeLayout(false);
             this.grpOpcionais.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();

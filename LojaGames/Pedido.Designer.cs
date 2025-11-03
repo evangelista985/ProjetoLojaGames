@@ -137,6 +137,7 @@ namespace LojaGames
             this.chk2Contas.TabIndex = 10;
             this.chk2Contas.Text = "2 CONTAS";
             this.chk2Contas.UseVisualStyleBackColor = true;
+            this.chk2Contas.CheckedChanged += new System.EventHandler(this.chk2Contas_CheckedChanged);
             // 
             // chkTesteDrive
             // 
@@ -147,6 +148,7 @@ namespace LojaGames
             this.chkTesteDrive.TabIndex = 8;
             this.chkTesteDrive.Text = "TESTE DRIVER";
             this.chkTesteDrive.UseVisualStyleBackColor = true;
+            this.chkTesteDrive.CheckedChanged += new System.EventHandler(this.chkTesteDrive_CheckedChanged);
             // 
             // chkTotalPass
             // 
@@ -157,6 +159,7 @@ namespace LojaGames
             this.chkTotalPass.TabIndex = 9;
             this.chkTotalPass.Text = "TOTAL PASS GAMER";
             this.chkTotalPass.UseVisualStyleBackColor = true;
+            this.chkTotalPass.CheckedChanged += new System.EventHandler(this.chkTotalPass_CheckedChanged);
             // 
             // chk2Controles
             // 
@@ -167,6 +170,7 @@ namespace LojaGames
             this.chk2Controles.TabIndex = 7;
             this.chk2Controles.Text = "2 CONTROLES";
             this.chk2Controles.UseVisualStyleBackColor = true;
+            this.chk2Controles.CheckedChanged += new System.EventHandler(this.chk2Controles_CheckedChanged);
             // 
             // txtValorPagar
             // 
@@ -260,7 +264,7 @@ namespace LojaGames
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtPesquisar);
             this.Controls.Add(this.lblPesquisar);
@@ -278,6 +282,7 @@ namespace LojaGames
             this.Controls.Add(this.lblValorJogo);
             this.Controls.Add(this.lblValorPagar);
             this.Controls.Add(this.lblValorOpcionais);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "Pedido";
             this.Text = "Pedido";
             this.Load += new System.EventHandler(this.Pedido_Load);

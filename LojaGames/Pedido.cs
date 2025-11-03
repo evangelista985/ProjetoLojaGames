@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace LojaGames
 {
@@ -19,6 +20,7 @@ namespace LojaGames
         public Pedido()
         {
             InitializeComponent();
+           
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -31,6 +33,12 @@ namespace LojaGames
             cmbTiposJogos.Items.Add("Jogo1");
             cmbTiposJogos.Items.Add("Jogo2");
             cmbTiposJogos.Items.Add("Jogo3");
+
+            decimal valorProduto = 1250.75m;
+            decimal valorFrete = 35.00m;
+            decimal total = valorProduto + valorFrete;
+
+            
         }
 
         private void dgvPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -190,7 +198,64 @@ namespace LojaGames
 
         private void Pedido_Paint(object sender, PaintEventArgs e)
         {
-            this.BackColor = Color.FromArgb(40, 40, 40); // Azul personalizado (RGB)
+            this.BackColor = Color.FromArgb(40, 40, 40); // altera cor de fundo da tela ao iniciar (RGB)
+        }
+
+        private void chk2Contas_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk2Contas.Checked)
+            {
+                chk2Contas.BackColor = Color.LightBlue;  // Fundo azul claro
+                chk2Contas.ForeColor = Color.DarkBlue;   // Texto azul escuro
+            }
+            else
+            {
+                chk2Contas.BackColor = SystemColors.Control; // Cor padrão
+                chk2Contas.ForeColor = Color.Black;          // Texto preto
+            }
+        }
+
+        private void chk2Controles_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk2Controles.Checked)
+            {
+                chk2Controles.BackColor = Color.LightBlue;  // Fundo azul claro
+                chk2Controles.ForeColor = Color.DarkBlue;   // Texto azul escuro
+            }
+            else
+            {
+                chk2Controles.BackColor = SystemColors.Control; // Cor padrão
+                chk2Controles.ForeColor = Color.Black;          // Texto preto
+            }
+
+        }
+
+        private void chkTotalPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkTotalPass.Checked)
+            {
+                chkTotalPass.BackColor = Color.LightBlue;  // Fundo azul claro
+                chkTotalPass.ForeColor = Color.DarkBlue;   // Texto azul escuro
+            }
+            else
+            {
+                chkTotalPass.BackColor = SystemColors.Control; // Cor padrão
+                chkTotalPass.ForeColor = Color.Black;          // Texto preto
+            }
+        }
+
+        private void chkTesteDrive_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkTesteDrive.Checked)
+            {
+                chkTesteDrive.BackColor = Color.LightBlue;  // Fundo azul claro
+                chkTesteDrive.ForeColor = Color.DarkBlue;   // Texto azul escuro
+            }
+            else
+            {
+                chkTesteDrive.BackColor = SystemColors.Control; // Cor padrão
+                chkTesteDrive.ForeColor = Color.Black;          // Texto preto
+            }
         }
     }
 }       

@@ -17,11 +17,15 @@ namespace LojaGames
 
         //instanciando a classe conexão
         conexao con = new conexao();
+
         public Pedido()
         {
             InitializeComponent();
-           
+            this.BackColor = System.Drawing.Color.FromArgb(40, 40, 40);
+
+
         }
+
 
         private void label3_Click(object sender, EventArgs e)
         {
@@ -30,6 +34,7 @@ namespace LojaGames
 
         private void Pedido_Load(object sender, EventArgs e)
         {
+
             cmbTiposJogos.Items.Add("Jogo1");
             cmbTiposJogos.Items.Add("Jogo2");
             cmbTiposJogos.Items.Add("Jogo3");
@@ -196,10 +201,7 @@ namespace LojaGames
             }
         }
 
-        private void Pedido_Paint(object sender, PaintEventArgs e)
-        {
-            this.BackColor = Color.FromArgb(40, 40, 40); // altera cor de fundo da tela ao iniciar (RGB)
-        }
+       
 
         private void chk2Contas_CheckedChanged(object sender, EventArgs e)
         {
@@ -257,6 +259,8 @@ namespace LojaGames
                 chkTesteDrive.ForeColor = Color.Black;          // Texto preto
             }
         }
+
+        
     }
 }       
 

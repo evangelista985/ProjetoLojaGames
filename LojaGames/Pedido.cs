@@ -17,7 +17,8 @@ namespace LojaGames
 
         //instanciando a classe conexão
         conexao con = new conexao();
-
+        //definindo cultura brasileira de moeda
+        private System.Globalization.CultureInfo culturaBR = new System.Globalization.CultureInfo("pt-BR");
         public Pedido()
         {
             InitializeComponent();
@@ -91,14 +92,20 @@ namespace LojaGames
 
             }
             valorPagar = valorJogo + valorOpcionais;
-            txtValorJogo.Text = Convert.ToString(valorJogo);
-            txtValorOpcionais.Text = Convert.ToString(valorOpcionais);
-            txtValorPagar.Text = Convert.ToString(valorPagar);
+            txtValorJogo.Text = valorJogo.ToString("C", culturaBR);
+            txtValorOpcionais.Text = valorOpcionais.ToString("C", culturaBR);
+            txtValorPagar.Text = valorPagar.ToString("C", culturaBR);
 
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            
+
+            // 1. DECLARE AS VARIÁVEIS AQUI, FORA DO BLOCO 'try'
+            decimal valorJogoBD = 0;
+            decimal valorOpcionaisBD = 0;
+            decimal valorPagarBD = 0;
             //vefifica os campos
             if (txtValorJogo.Text == "")
             {
@@ -120,13 +127,21 @@ namespace LojaGames
                 //tratamento de erros
                 try
                 {
+                    valorJogoBD = Decimal.Parse(txtValorJogo.Text, System.Globalization.NumberStyles.Currency, culturaBR);
+                    valorOpcionaisBD = Decimal.Parse(txtValorOpcionais.Text, System.Globalization.NumberStyles.Currency, culturaBR);
+                    valorPagarBD = Decimal.Parse(txtValorPagar.Text, System.Globalization.NumberStyles.Currency, culturaBR);
+
+
                     //inserindo dados no banco de dados
                     string sql = "insert into tbPedido(tipoJogo,valorJogo,valorOpcionais,valorPagar) values(@tjogos,@vjogo,@vopcionais,@vpagar)";
                     MySqlCommand cmd = new MySqlCommand(sql, con.ConnectarBD());
+
                     cmd.Parameters.Add("@tjogos", MySqlDbType.Text).Value = cmbTiposJogos.Text;
-                    cmd.Parameters.Add("@vjogo", MySqlDbType.Text).Value = txtValorJogo.Text;
-                    cmd.Parameters.Add("@vopcionais", MySqlDbType.Text).Value = txtValorOpcionais.Text;
-                    cmd.Parameters.Add("@vpagar", MySqlDbType.Text).Value = txtValorPagar.Text;
+
+                    // ATENÇÃO: Usamos o valor NUMÉRICO (valorJogoBD) e o tipo DECIMAL
+                    cmd.Parameters.Add("@vjogo", MySqlDbType.Decimal).Value = valorJogoBD;
+                    cmd.Parameters.Add("@vopcionais", MySqlDbType.Decimal).Value = valorOpcionaisBD;
+                    cmd.Parameters.Add("@vpagar", MySqlDbType.Decimal).Value = valorPagarBD;
                     //executa a ação
                     cmd.ExecuteNonQuery();
 
@@ -153,23 +168,42 @@ namespace LojaGames
         //Método que vai carregar informações do datagrid
         public void CarregarPedidos()
         {
+            // Usamos a cultura Invariante (ponto decimal) para LEITURA do banco.
+            // Usamos a cultura Brasileira (vírgula decimal, R$) para EXIBIÇÃO.
+            System.Globalization.CultureInfo culturaLeitura = System.Globalization.CultureInfo.InvariantCulture;
+            System.Globalization.CultureInfo culturaExibicao = new System.Globalization.CultureInfo("pt-BR");
+
             try
             {
                 txtCodigo.Text = dgvPedido.SelectedRows[0].Cells[0].Value.ToString();
                 cmbTiposJogos.Text = dgvPedido.SelectedRows[0].Cells[1].Value.ToString();
-                txtValorJogo.Text = dgvPedido.SelectedRows[0].Cells[2].Value.ToString();
-                txtValorOpcionais.Text = dgvPedido.SelectedRows[0].Cells[3].Value.ToString();
-                txtValorPagar.Text = dgvPedido.SelectedRows[0].Cells[4].Value.ToString();
 
+                // 1. Converte o valor do DataGridView (que vem do banco) para double
+                // Usamos a cultura de LEITURA (InvariantCulture) para garantir que ele entenda o ponto como decimal.
+
+                // Valor Jogo
+                string sValorJogo = dgvPedido.SelectedRows[0].Cells[2].Value.ToString();
+                double valorJogo = Double.Parse(sValorJogo, culturaLeitura);
+                txtValorJogo.Text = valorJogo.ToString("C", culturaExibicao); // Formata para R$ para exibição
+
+                // Valor Opcionais
+                string sValorOpcionais = dgvPedido.SelectedRows[0].Cells[3].Value.ToString();
+                double valorOpcionais = Double.Parse(sValorOpcionais, culturaLeitura);
+                txtValorOpcionais.Text = valorOpcionais.ToString("C", culturaExibicao); // Formata para R$ para exibição
+
+                // Valor a Pagar
+                string sValorPagar = dgvPedido.SelectedRows[0].Cells[4].Value.ToString();
+                double valorPagar = Double.Parse(sValorPagar, culturaLeitura);
+                txtValorPagar.Text = valorPagar.ToString("C", culturaExibicao); // Formata para R$ para exibição
             }
             catch (Exception error)
             {
-                MessageBox.Show("Erros ao clicar" + error);
+                // Se houver erro, mostre a mensagem detalhada
+                MessageBox.Show("Erro ao carregar dados. Verifique se os campos do BD são numéricos e se o formato está correto (ponto como decimal no BD). Detalhes: " + error.Message);
             }
-
         }
 
-       
+
 
         private void txtPesquisar_TextChanged_1(object sender, EventArgs e)
         {
@@ -212,8 +246,8 @@ namespace LojaGames
             }
             else
             {
-                chk2Contas.BackColor = SystemColors.Control; // Cor padrão
-                chk2Contas.ForeColor = Color.Black;          // Texto preto
+                chk2Contas.BackColor = Color.FromArgb(40, 40, 40);  // Cor padrão
+                chk2Contas.ForeColor = Color.Silver;          // Texto preto
             }
         }
 
@@ -226,8 +260,8 @@ namespace LojaGames
             }
             else
             {
-                chk2Controles.BackColor = SystemColors.Control; // Cor padrão
-                chk2Controles.ForeColor = Color.Black;          // Texto preto
+                chk2Controles.BackColor = Color.FromArgb(40, 40, 40);  // Cor padrão
+                chk2Controles.ForeColor = Color.Silver;          // Texto preto
             }
 
         }
@@ -241,8 +275,8 @@ namespace LojaGames
             }
             else
             {
-                chkTotalPass.BackColor = SystemColors.Control; // Cor padrão
-                chkTotalPass.ForeColor = Color.Black;          // Texto preto
+                chkTotalPass.BackColor = Color.FromArgb(40, 40, 40);  // Cor padrão
+                chkTotalPass.ForeColor = Color.Silver;          // Texto preto
             }
         }
 
@@ -255,8 +289,8 @@ namespace LojaGames
             }
             else
             {
-                chkTesteDrive.BackColor = SystemColors.Control; // Cor padrão
-                chkTesteDrive.ForeColor = Color.Black;          // Texto preto
+                chkTesteDrive.BackColor = Color.FromArgb(40, 40, 40);  // Cor padrão
+                chkTesteDrive.ForeColor = Color.Silver;          // Texto preto
             }
         }
 

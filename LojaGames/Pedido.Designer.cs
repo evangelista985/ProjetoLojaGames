@@ -197,6 +197,7 @@ namespace LojaGames
             this.btnNovo.TabIndex = 13;
             this.btnNovo.Text = "NOVO";
             this.btnNovo.UseVisualStyleBackColor = false;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnSair
             // 
@@ -246,7 +247,7 @@ namespace LojaGames
             this.lblPesquisar.AutoSize = true;
             this.lblPesquisar.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPesquisar.ForeColor = System.Drawing.Color.Silver;
-            this.lblPesquisar.Location = new System.Drawing.Point(451, 181);
+            this.lblPesquisar.Location = new System.Drawing.Point(268, 218);
             this.lblPesquisar.Name = "lblPesquisar";
             this.lblPesquisar.Size = new System.Drawing.Size(71, 13);
             this.lblPesquisar.TabIndex = 19;
@@ -264,7 +265,7 @@ namespace LojaGames
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtPesquisar);
             this.Controls.Add(this.lblPesquisar);

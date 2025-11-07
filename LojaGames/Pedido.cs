@@ -40,11 +40,12 @@ namespace LojaGames
             cmbTiposJogos.Items.Add("Jogo2");
             cmbTiposJogos.Items.Add("Jogo3");
 
-            decimal valorProduto = 1250.75m;
-            decimal valorFrete = 35.00m;
-            decimal total = valorProduto + valorFrete;
+            // Define o próximo código de pedido no campo txtCodigo
+            // **ESTA É A LÓGICA PRINCIPAL**
+            txtCodigo.Text = ObterProximoIdPedido().ToString();
+            txtCodigo.Enabled = false; // Garante que o usuário não mude o código
 
-            
+
         }
 
         private void dgvPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -160,12 +161,78 @@ namespace LojaGames
                 }
             }
         }
+        public int ObterProximoIdPedido()
+        {
+            int proximoId = 1; // Valor padrão se a tabela estiver vazia
 
+            try
+            {
+                // Conecta e executa a query para obter o maior idPedido
+                MySqlConnection conn = con.ConnectarBD();
+                // Assumindo que o campo ID na sua tabela se chama 'idPedido'
+                string sql = "SELECT MAX(codPedido) FROM tbpedido";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                object resultado = cmd.ExecuteScalar(); // Executa e retorna o primeiro valor
+
+                // Verifica se o resultado não é nulo (ou seja, se há registros na tabela)
+                if (resultado != null && resultado != DBNull.Value)
+                {
+                    // Se houver registros, soma 1 ao maior ID encontrado
+                    proximoId = Convert.ToInt32(resultado) + 1;
+                }
+
+                con.DesConnectarBD(); // Desconecta
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao buscar o próximo código do pedido: " + erro.Message);
+                proximoId = 0;
+            }
+
+            return proximoId;
+        }
+        // Método para limpar todos os campos da tela e resetar o estado
+        private void LimparCampos()
+        {
+            // Limpar TextBoxes de valores
+            txtValorJogo.Text = string.Empty;
+            txtValorOpcionais.Text = string.Empty;
+            txtValorPagar.Text = string.Empty;
+
+            // Limpar ComboBox
+            cmbTiposJogos.SelectedIndex = -1; // Remove qualquer item selecionado
+            // cmbTiposJogos.Text = string.Empty; // Esta linha é opcional se SelectedIndex = -1 funcionar
+
+            // Desmarcar CheckBoxes (O seu código de _CheckedChanged irá resetar as cores)
+            chk2Contas.Checked = false;
+            chk2Controles.Checked = false;
+            chkTotalPass.Checked = false;
+            chkTesteDrive.Checked = false;
+
+            // Limpar campo de pesquisa (se quiser resetar a visualização da DataGridView)
+            txtPesquisar.Text = string.Empty;
+            // Se o dgvPedido tiver que ser limpo
+            // dgvPedido.DataSource = null; 
+
+            // Colocar o foco no início do pedido
+            cmbTiposJogos.Focus();
+        }
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            // 1. Limpa todos os campos, preparando a tela para um novo pedido
+            LimparCampos();
+
+            // 2. Atualiza o código do pedido com o próximo número disponível
+            // Esta função ObterProximoIdPedido() é a que você implementou para pegar MAX(ID) + 1.
+            txtCodigo.Text = ObterProximoIdPedido().ToString();
+        }
         private void dgvPedido_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             CarregarPedidos();
         }
         //Método que vai carregar informações do datagrid
+        
         public void CarregarPedidos()
         {
             // Usamos a cultura Invariante (ponto decimal) para LEITURA do banco.

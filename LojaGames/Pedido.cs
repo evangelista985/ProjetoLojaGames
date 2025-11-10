@@ -41,7 +41,6 @@ namespace LojaGames
             cmbTiposJogos.Items.Add("Jogo3");
 
             // Define o próximo código de pedido no campo txtCodigo
-            // **ESTA É A LÓGICA PRINCIPAL**
             txtCodigo.Text = ObterProximoIdPedido().ToString();
             txtCodigo.Enabled = false; // Garante que o usuário não mude o código
 
@@ -55,7 +54,7 @@ namespace LojaGames
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            //declarando variável
+            
             double valorJogo = 0;
             double valorOpcionais = 0;
             double valorPagar = 0;
@@ -103,7 +102,7 @@ namespace LojaGames
         {
             
 
-            // 1. DECLARE AS VARIÁVEIS AQUI, FORA DO BLOCO 'try'
+           
             decimal valorJogoBD = 0;
             decimal valorOpcionaisBD = 0;
             decimal valorPagarBD = 0;
@@ -125,7 +124,7 @@ namespace LojaGames
             }
             else
             {
-                //tratamento de erros
+                //valor decimal em reais
                 try
                 {
                     valorJogoBD = Decimal.Parse(txtValorJogo.Text, System.Globalization.NumberStyles.Currency, culturaBR);
@@ -173,7 +172,8 @@ namespace LojaGames
                 string sql = "SELECT MAX(codPedido) FROM tbpedido";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-                object resultado = cmd.ExecuteScalar(); // Executa e retorna o primeiro valor
+                object resultado = cmd.ExecuteScalar(); 
+                // Executa e retorna o primeiro valor
 
                 // Verifica se o resultado não é nulo (ou seja, se há registros na tabela)
                 if (resultado != null && resultado != DBNull.Value)
@@ -195,35 +195,33 @@ namespace LojaGames
         // Método para limpar todos os campos da tela e resetar o estado
         private void LimparCampos()
         {
-            // Limpar TextBoxes de valores
+            
             txtValorJogo.Text = string.Empty;
             txtValorOpcionais.Text = string.Empty;
             txtValorPagar.Text = string.Empty;
 
-            // Limpar ComboBox
-            cmbTiposJogos.SelectedIndex = -1; // Remove qualquer item selecionado
-            // cmbTiposJogos.Text = string.Empty; // Esta linha é opcional se SelectedIndex = -1 funcionar
+            
+            cmbTiposJogos.SelectedIndex = -1; 
 
-            // Desmarcar CheckBoxes (O seu código de _CheckedChanged irá resetar as cores)
+            
             chk2Contas.Checked = false;
             chk2Controles.Checked = false;
             chkTotalPass.Checked = false;
             chkTesteDrive.Checked = false;
 
-            // Limpar campo de pesquisa (se quiser resetar a visualização da DataGridView)
+            
             txtPesquisar.Text = string.Empty;
-            // Se o dgvPedido tiver que ser limpo
-            // dgvPedido.DataSource = null; 
+            
 
-            // Colocar o foco no início do pedido
+            
             cmbTiposJogos.Focus();
         }
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            // 1. Limpa todos os campos, preparando a tela para um novo pedido
+            // Limpa todos os campos, preparando a tela para um novo pedido
             LimparCampos();
 
-            // 2. Atualiza o código do pedido com o próximo número disponível
+            // Atualiza o código do pedido com o próximo número disponível
             // Esta função ObterProximoIdPedido() é a que você implementou para pegar MAX(ID) + 1.
             txtCodigo.Text = ObterProximoIdPedido().ToString();
         }
@@ -235,8 +233,8 @@ namespace LojaGames
         
         public void CarregarPedidos()
         {
-            // Usamos a cultura Invariante (ponto decimal) para LEITURA do banco.
-            // Usamos a cultura Brasileira (vírgula decimal, R$) para EXIBIÇÃO.
+            
+            
             System.Globalization.CultureInfo culturaLeitura = System.Globalization.CultureInfo.InvariantCulture;
             System.Globalization.CultureInfo culturaExibicao = new System.Globalization.CultureInfo("pt-BR");
 
@@ -246,26 +244,26 @@ namespace LojaGames
                 cmbTiposJogos.Text = dgvPedido.SelectedRows[0].Cells[1].Value.ToString();
 
                 // 1. Converte o valor do DataGridView (que vem do banco) para double
-                // Usamos a cultura de LEITURA (InvariantCulture) para garantir que ele entenda o ponto como decimal.
+                // Usa a cultura de LEITURA (InvariantCulture) para garantir que ele entenda o ponto como decimal.
 
-                // Valor Jogo
+                
                 string sValorJogo = dgvPedido.SelectedRows[0].Cells[2].Value.ToString();
                 double valorJogo = Double.Parse(sValorJogo, culturaLeitura);
-                txtValorJogo.Text = valorJogo.ToString("C", culturaExibicao); // Formata para R$ para exibição
+                txtValorJogo.Text = valorJogo.ToString("C", culturaExibicao); 
 
-                // Valor Opcionais
+                
                 string sValorOpcionais = dgvPedido.SelectedRows[0].Cells[3].Value.ToString();
                 double valorOpcionais = Double.Parse(sValorOpcionais, culturaLeitura);
-                txtValorOpcionais.Text = valorOpcionais.ToString("C", culturaExibicao); // Formata para R$ para exibição
+                txtValorOpcionais.Text = valorOpcionais.ToString("C", culturaExibicao); 
 
-                // Valor a Pagar
+                
                 string sValorPagar = dgvPedido.SelectedRows[0].Cells[4].Value.ToString();
                 double valorPagar = Double.Parse(sValorPagar, culturaLeitura);
-                txtValorPagar.Text = valorPagar.ToString("C", culturaExibicao); // Formata para R$ para exibição
+                txtValorPagar.Text = valorPagar.ToString("C", culturaExibicao); 
             }
             catch (Exception error)
             {
-                // Se houver erro, mostre a mensagem detalhada
+                
                 MessageBox.Show("Erro ao carregar dados. Verifique se os campos do BD são numéricos e se o formato está correto (ponto como decimal no BD). Detalhes: " + error.Message);
             }
         }
@@ -303,18 +301,18 @@ namespace LojaGames
         }
 
        
-
+        //metodo checkbox mudar cor
         private void chk2Contas_CheckedChanged(object sender, EventArgs e)
         {
             if (chk2Contas.Checked)
             {
-                chk2Contas.BackColor = Color.LightBlue;  // Fundo azul claro
-                chk2Contas.ForeColor = Color.DarkBlue;   // Texto azul escuro
+                chk2Contas.BackColor = Color.LightBlue;  
+                chk2Contas.ForeColor = Color.DarkBlue;   
             }
             else
             {
-                chk2Contas.BackColor = Color.FromArgb(40, 40, 40);  // Cor padrão
-                chk2Contas.ForeColor = Color.Silver;          // Texto preto
+                chk2Contas.BackColor = Color.FromArgb(40, 40, 40);  
+                chk2Contas.ForeColor = Color.Silver;          
             }
         }
 
@@ -322,13 +320,13 @@ namespace LojaGames
         {
             if (chk2Controles.Checked)
             {
-                chk2Controles.BackColor = Color.LightBlue;  // Fundo azul claro
-                chk2Controles.ForeColor = Color.DarkBlue;   // Texto azul escuro
+                chk2Controles.BackColor = Color.LightBlue;  
+                chk2Controles.ForeColor = Color.DarkBlue;   
             }
             else
             {
-                chk2Controles.BackColor = Color.FromArgb(40, 40, 40);  // Cor padrão
-                chk2Controles.ForeColor = Color.Silver;          // Texto preto
+                chk2Controles.BackColor = Color.FromArgb(40, 40, 40);  
+                chk2Controles.ForeColor = Color.Silver;          
             }
 
         }
@@ -337,13 +335,13 @@ namespace LojaGames
         {
             if (chkTotalPass.Checked)
             {
-                chkTotalPass.BackColor = Color.LightBlue;  // Fundo azul claro
-                chkTotalPass.ForeColor = Color.DarkBlue;   // Texto azul escuro
+                chkTotalPass.BackColor = Color.LightBlue;  
+                chkTotalPass.ForeColor = Color.DarkBlue;   
             }
             else
             {
-                chkTotalPass.BackColor = Color.FromArgb(40, 40, 40);  // Cor padrão
-                chkTotalPass.ForeColor = Color.Silver;          // Texto preto
+                chkTotalPass.BackColor = Color.FromArgb(40, 40, 40);  
+                chkTotalPass.ForeColor = Color.Silver;          
             }
         }
 
@@ -351,13 +349,13 @@ namespace LojaGames
         {
             if (chkTesteDrive.Checked)
             {
-                chkTesteDrive.BackColor = Color.LightBlue;  // Fundo azul claro
-                chkTesteDrive.ForeColor = Color.DarkBlue;   // Texto azul escuro
+                chkTesteDrive.BackColor = Color.LightBlue;  
+                chkTesteDrive.ForeColor = Color.DarkBlue;   
             }
             else
             {
-                chkTesteDrive.BackColor = Color.FromArgb(40, 40, 40);  // Cor padrão
-                chkTesteDrive.ForeColor = Color.Silver;          // Texto preto
+                chkTesteDrive.BackColor = Color.FromArgb(40, 40, 40);  
+                chkTesteDrive.ForeColor = Color.Silver;          
             }
         }
 
